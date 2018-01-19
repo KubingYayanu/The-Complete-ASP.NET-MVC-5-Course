@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
+using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
@@ -100,7 +101,8 @@ namespace Vidly.Controllers
             var viewModel = new MovieFormViewModel
             {
                 Movie = movie,
-                Genres = _context.Genres.ToList()
+                Genres = _context.Genres.ToList(),
+                FormName = "Edit Movie"
             };
 
             return View("MovieForm", viewModel);
@@ -117,7 +119,7 @@ namespace Vidly.Controllers
 
             //return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
 
-            var movies = _context.Movies.ToList();
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
 
             return View(movies);
         }
