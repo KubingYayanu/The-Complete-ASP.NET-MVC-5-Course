@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
-using System.Data.Entity;
 
 namespace Vidly.Controllers
 {
@@ -88,7 +85,7 @@ namespace Vidly.Controllers
             else
             {
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
-                 
+
                 movieInDb.Name = movie.Name;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreId = movie.GenreId;
@@ -128,9 +125,10 @@ namespace Vidly.Controllers
 
             //return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
 
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            //var movies = _context.Movies.Include(m => m.Genre).ToList();
 
-            return View(movies);
+            //return View(movies);
+            return View();
         }
 
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
