@@ -39,6 +39,7 @@ namespace Vidly.Controllers.Api
 
         // Post /api/movies
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -54,6 +55,7 @@ namespace Vidly.Controllers.Api
         }
 
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -70,6 +72,7 @@ namespace Vidly.Controllers.Api
         }
 
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public void DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
