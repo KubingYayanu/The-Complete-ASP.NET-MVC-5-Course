@@ -10,6 +10,8 @@ namespace Vidly
             //global attribute to all controllers
             filters.Add(new HandleErrorAttribute());
             filters.Add(new AuthorizeAttribute());
+            //deny http request, only https can access
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
