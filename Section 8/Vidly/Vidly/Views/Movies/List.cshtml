@@ -4,9 +4,9 @@
 }
 
 <h2>Movies</h2>
-
-@Html.ActionLink("NEW MOVIE", "New", "Movies", new { }, new { @class = "btn btn-primary btn-large" })
-
+<p>
+    @Html.ActionLink("NEW MOVIE", "New", "Movies", new { }, new { @class = "btn btn-primary btn-large" })
+</p>
 <table id="movies" class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -45,7 +45,7 @@
                     }
                 ]
             });
-            
+
             $("#movies").on("click", ".js-delete", function () {
                 var button = $(this);
 
