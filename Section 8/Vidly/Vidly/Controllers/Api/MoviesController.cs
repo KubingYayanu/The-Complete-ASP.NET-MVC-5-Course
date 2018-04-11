@@ -6,6 +6,7 @@ using System.Net;
 using System.Web.Http;
 using Vidly.Dtos;
 using Vidly.Models;
+using Vidly.ViewModels.jQuery.DataTables;
 
 namespace Vidly.Controllers.Api
 {
@@ -35,6 +36,25 @@ namespace Vidly.Controllers.Api
                 return NotFound();
 
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
+        }
+
+        // POST /api/movies
+        [HttpPost]
+        public IHttpActionResult CustomServerSideSearch(DataTableAjaxPostModel model)
+        {
+            var movieDto = _context.Movies.Include(m => m.Genre)
+                .Skip(model.start)
+                .Take(model.length)
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
+
+            return Ok(new
+            {
+                draw = model.draw,
+                recordsTotal = movieDto.Count(),
+                recordsFiltered = movieDto.Count(),
+                data = movieDto
+            });
         }
 
         // Post /api/movies

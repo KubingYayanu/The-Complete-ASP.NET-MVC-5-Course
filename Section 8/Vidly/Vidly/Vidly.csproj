@@ -320,6 +320,10 @@
     <Compile Include="ViewModels\ExternalLoginListViewModel.cs" />
     <Compile Include="ViewModels\ForgotViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
+    <Compile Include="ViewModels\jQuery.DataTables\DataTableAjaxPostModel.cs" />
+    <Compile Include="ViewModels\jQuery.DataTables\DataTableColumnModel.cs" />
+    <Compile Include="ViewModels\jQuery.DataTables\DataTableOrderModel.cs" />
+    <Compile Include="ViewModels\jQuery.DataTables\DataTableSearchModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
