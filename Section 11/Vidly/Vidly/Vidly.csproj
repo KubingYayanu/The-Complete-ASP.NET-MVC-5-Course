@@ -238,6 +238,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CheckInController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
     <Compile Include="Controllers\Api\NewRentalsController.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
+    <Compile Include="Dtos\CheckMoviesInDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
@@ -327,13 +329,13 @@
     <Compile Include="Migrations\201804100854397_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201804100854397_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804130734439_AddRentalAssociationModel.cs" />
-    <Compile Include="Migrations\201804130734439_AddRentalAssociationModel.Designer.cs">
-      <DependentUpon>201804130734439_AddRentalAssociationModel.cs</DependentUpon>
+    <Compile Include="Migrations\201804161632198_AddRentalAssociationModel.cs" />
+    <Compile Include="Migrations\201804161632198_AddRentalAssociationModel.Designer.cs">
+      <DependentUpon>201804161632198_AddRentalAssociationModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804131441100_AddNumberAvaliablePropertyToMovieModel.cs" />
-    <Compile Include="Migrations\201804131441100_AddNumberAvaliablePropertyToMovieModel.Designer.cs">
-      <DependentUpon>201804131441100_AddNumberAvaliablePropertyToMovieModel.cs</DependentUpon>
+    <Compile Include="Migrations\201804161636177_AddNumberAvaliablePropertyToMovieModel.cs" />
+    <Compile Include="Migrations\201804161636177_AddNumberAvaliablePropertyToMovieModel.Designer.cs">
+      <DependentUpon>201804161636177_AddNumberAvaliablePropertyToMovieModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -704,11 +706,11 @@
     <EmbeddedResource Include="Migrations\201804100854397_AddPhoneToApplicationUser.resx">
       <DependentUpon>201804100854397_AddPhoneToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804130734439_AddRentalAssociationModel.resx">
-      <DependentUpon>201804130734439_AddRentalAssociationModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804161632198_AddRentalAssociationModel.resx">
+      <DependentUpon>201804161632198_AddRentalAssociationModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804131441100_AddNumberAvaliablePropertyToMovieModel.resx">
-      <DependentUpon>201804131441100_AddNumberAvaliablePropertyToMovieModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804161636177_AddNumberAvaliablePropertyToMovieModel.resx">
+      <DependentUpon>201804161636177_AddNumberAvaliablePropertyToMovieModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

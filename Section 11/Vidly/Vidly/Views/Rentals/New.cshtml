@@ -35,7 +35,7 @@
         $(function () {
             //ViewModel for Client
             var vm = {
-                movieIds: []
+                MoviesIds: []
             };
 
             var customers = new Bloodhound({
@@ -80,7 +80,7 @@
 
                 $("#movie").typeahead("val", "");
 
-                vm.movieIds.push(movie.id);
+                vm.MoviesIds.push(movie.id);
             });
 
             $.validator.addMethod("validCustomer", function () {
@@ -88,7 +88,7 @@
             }, "Please select a valid customer.");
 
             $.validator.addMethod("atLeastOneMovie", function () {
-                return vm.movieIds.length > 0;
+                return vm.MoviesIds.length > 0;
             }, "Please select at least one movie.");
 
             var validator = $("#newRental").validate({
@@ -104,7 +104,7 @@
                         $("#movie").typeahead("val", "");
                         $("#movies").empty();
 
-                        vm = { movieIds: [] };
+                        vm = { MoviesIds: [] };
 
                         validator.restForm();
                     }).fail(function () {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,6 +17,7 @@ namespace Vidly.Controllers.Api
         public NewRentalsController()
         {
             _context = new ApplicationDbContext();
+            _context.Database.Log = s => Debug.WriteLine(s);
         }
 
         protected override void Dispose(bool disposing)
@@ -45,6 +47,7 @@ namespace Vidly.Controllers.Api
                 return BadRequest("One or more MovieIds are Invalid.");
             }
 
+            DateTime now = DateTime.Now;
             foreach (var movie in moviesInDb)
             {
                 if (movie.NumberAvaliable == 0)
@@ -57,16 +60,15 @@ namespace Vidly.Controllers.Api
                 {
                     Customer = customerInDb,
                     Movie = movie,
-                    DateRented = DateTime.Now
+                    DateRented = now
                 };
 
                 _context.Rentals.Add(rental);
             }
-
+            
             _context.SaveChanges();
             
             return Ok();
         }
-
     }
 }

@@ -17,7 +17,11 @@ namespace Vidly.Models
         [Required]
         public Customer Customer { get; set; }
 
+        public int CustomerId { get; set; }
+
         [Required]
         public Movie Movie { get; set; }
+
+        public int MovieId { get; set; }
     }
 }
