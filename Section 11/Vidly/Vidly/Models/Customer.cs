@@ -24,5 +24,10 @@ namespace Vidly.Models
         [Display(Name = "Date of Birth")]
         [Min18YearIfAMember]
         public DateTime? Birthdate { get; set; }
+
+        [Required]
+        [Display(Name = "Rent Number At One Time")]
+        [Range(1, 10)]
+        public byte RentNumberAtOneTime { get; set; }
     }
 }

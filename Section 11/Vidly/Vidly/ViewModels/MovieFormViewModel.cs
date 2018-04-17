@@ -30,6 +30,11 @@ namespace Vidly.ViewModels
         [Range(1, 20)]
         public byte? NumberInStock { get; set; }
 
+        [Required]
+        [Display(Name = "Number Avaliable")]
+        [Range(1, 20)]
+        public byte? NumberAvaliable { get; set; }
+
         public string Title
         {
             get
@@ -50,6 +55,7 @@ namespace Vidly.ViewModels
             ReleaseDate = movie.ReleaseDate;
             NumberInStock = movie.NumberInStock;
             GenreId = movie.GenreId;
+            NumberAvaliable = movie.NumberAvaliable;
         }
     }
 }

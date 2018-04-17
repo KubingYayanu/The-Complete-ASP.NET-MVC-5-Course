@@ -40,6 +40,11 @@ namespace Vidly.Controllers.Api
                 return BadRequest("Invalid customer ID.");
             }
 
+            if (newRentalDto.MoviesIds.Count > customerInDb.RentNumberAtOneTime)
+            {
+                return BadRequest("Too much Movies one time.");
+            }
+
             var moviesInDb = _context.Movies.Where(m => newRentalDto.MoviesIds.Contains(m.Id)).ToList();
 
             if (moviesInDb.Count != newRentalDto.MoviesIds.Count)

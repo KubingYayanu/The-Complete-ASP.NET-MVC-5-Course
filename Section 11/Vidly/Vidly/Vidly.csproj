@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201804161636177_AddNumberAvaliablePropertyToMovieModel.Designer.cs">
       <DependentUpon>201804161636177_AddNumberAvaliablePropertyToMovieModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.cs" />
+    <Compile Include="Migrations\201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.Designer.cs">
+      <DependentUpon>201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Rental.cs" />
@@ -711,6 +715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804161636177_AddNumberAvaliablePropertyToMovieModel.resx">
       <DependentUpon>201804161636177_AddNumberAvaliablePropertyToMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.resx">
+      <DependentUpon>201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

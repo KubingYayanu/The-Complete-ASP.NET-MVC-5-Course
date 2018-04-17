@@ -29,6 +29,11 @@
         @Html.TextBoxFor(m => m.NumberInStock, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.NumberInStock)
     </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NumberAvaliable)
+        @Html.TextBoxFor(m => m.NumberAvaliable, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(m => m.NumberAvaliable)
+    </div>
     @Html.HiddenFor(m => m.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
@@ -37,4 +42,13 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            if ($("#@Html.NameFor(m => m.Id)").val() === "0") {
+                $("#@Html.NameFor(m => m.NumberInStock)").change(function () {
+                    $("#@Html.NameFor(m => m.NumberAvaliable)").val($(this).val());
+                });
+            }
+        });
+    </script>
 }
