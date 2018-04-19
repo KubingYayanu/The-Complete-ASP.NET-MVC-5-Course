@@ -341,6 +341,10 @@
     <Compile Include="Migrations\201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.Designer.cs">
       <DependentUpon>201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804190435404_AddDelinquentPropertyToCustomerModel.cs" />
+    <Compile Include="Migrations\201804190435404_AddDelinquentPropertyToCustomerModel.Designer.cs">
+      <DependentUpon>201804190435404_AddDelinquentPropertyToCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Rental.cs" />
@@ -638,6 +642,7 @@
     <Content Include="Views\Movies\MovieForm.cshtml" />
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
     <Content Include="Views\Rentals\New.cshtml" />
+    <Content Include="Views\Rentals\CheckIn.cshtml" />
     <None Include="Web.Testing.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -718,6 +723,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.resx">
       <DependentUpon>201804171401584_AddRentNumberAtOneTimePropertyForCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804190435404_AddDelinquentPropertyToCustomerModel.resx">
+      <DependentUpon>201804190435404_AddDelinquentPropertyToCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -40,6 +40,11 @@ namespace Vidly.Controllers.Api
                 return BadRequest("Invalid customer ID.");
             }
 
+            if (customerInDb.Delinquent)
+            {
+                return BadRequest("Delinquent on Payment.");
+            }
+
             if (newRentalDto.MoviesIds.Count > customerInDb.RentNumberAtOneTime)
             {
                 return BadRequest("Too much Movies one time.");

@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ReleaseDate)
-        @Html.TextBoxFor(m => m.ReleaseDate, "{0:d MM yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.ReleaseDate, "{0:MM d yyyy}", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.ReleaseDate)
     </div>
     <div class="form-group">

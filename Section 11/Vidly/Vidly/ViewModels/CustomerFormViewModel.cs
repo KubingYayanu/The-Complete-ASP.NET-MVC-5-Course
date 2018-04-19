@@ -31,6 +31,8 @@ namespace Vidly.ViewModels
         [Range(1, 10)]
         public byte? RentNumberAtOneTime { get; set; }
 
+        public bool Delinquent { get; set; }
+
         public string Title
         {
             get
@@ -52,6 +54,7 @@ namespace Vidly.ViewModels
             MembershipTypeId = customer.MembershipTypeId;
             Birthdate = customer.Birthdate;
             RentNumberAtOneTime = customer.RentNumberAtOneTime;
+            Delinquent = customer.Delinquent;
         }
     }
 }

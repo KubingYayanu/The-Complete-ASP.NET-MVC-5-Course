@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Vidly.Models
 {
@@ -29,5 +26,7 @@ namespace Vidly.Models
         [Display(Name = "Rent Number At One Time")]
         [Range(1, 10)]
         public byte RentNumberAtOneTime { get; set; }
+
+        public bool Delinquent { get; set; }
     }
 }
