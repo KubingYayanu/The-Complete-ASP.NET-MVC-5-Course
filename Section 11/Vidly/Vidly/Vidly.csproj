@@ -237,6 +237,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\DecimalPrecisionAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CheckInController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
@@ -344,6 +345,10 @@
     <Compile Include="Migrations\201804190435404_AddDelinquentPropertyToCustomerModel.cs" />
     <Compile Include="Migrations\201804190435404_AddDelinquentPropertyToCustomerModel.Designer.cs">
       <DependentUpon>201804190435404_AddDelinquentPropertyToCustomerModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804200451340_AddPriceAndDiscountToMovieModel.cs" />
+    <Compile Include="Migrations\201804200451340_AddPriceAndDiscountToMovieModel.Designer.cs">
+      <DependentUpon>201804200451340_AddPriceAndDiscountToMovieModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -726,6 +731,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804190435404_AddDelinquentPropertyToCustomerModel.resx">
       <DependentUpon>201804190435404_AddDelinquentPropertyToCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804200451340_AddPriceAndDiscountToMovieModel.resx">
+      <DependentUpon>201804200451340_AddPriceAndDiscountToMovieModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

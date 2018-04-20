@@ -92,6 +92,8 @@ namespace Vidly.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
+                movieInDb.Price = movie.Price;
+                movieInDb.Discount = movie.Discount;
             }
 
             _context.SaveChanges();

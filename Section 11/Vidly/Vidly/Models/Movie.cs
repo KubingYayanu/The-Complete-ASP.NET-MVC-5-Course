@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Vidly.Attributes;
 
 namespace Vidly.Models
 {
@@ -30,5 +31,13 @@ namespace Vidly.Models
         [Display(Name = "Number Avaliable")]
         [Range(1, 20)]
         public byte NumberAvaliable { get; set; }
+
+        [Required]
+        public int Price { get; set; }
+
+        [Required]
+        [DecimalPrecision(18, 2)]
+        [Range(0, 1)]
+        public decimal Discount { get; set; }
     }
 }

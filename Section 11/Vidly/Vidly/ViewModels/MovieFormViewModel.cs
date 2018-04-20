@@ -35,6 +35,14 @@ namespace Vidly.ViewModels
         [Range(1, 20)]
         public byte? NumberAvaliable { get; set; }
 
+        [Required]
+        public int? Price { get; set; }
+
+        [Required]
+        [RegularExpression(@"^(([0]{1})|([0-9]{1,11}))(\.([0-9]{1,2}))?$", ErrorMessage = "Invalid Discount")]
+        [Range(0, 1)]
+        public decimal? Discount { get; set; }
+
         public string Title
         {
             get
@@ -56,6 +64,8 @@ namespace Vidly.ViewModels
             NumberInStock = movie.NumberInStock;
             GenreId = movie.GenreId;
             NumberAvaliable = movie.NumberAvaliable;
+            Price = movie.Price;
+            Discount = movie.Discount;
         }
     }
 }
