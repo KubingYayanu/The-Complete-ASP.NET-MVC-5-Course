@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Vidly.Models;
 
 namespace Vidly.Controllers
 {
-    public class RentalsController : Controller
+    public class RolesController : Controller
     {
-        public ActionResult New()
+        // GET: Roles
+        public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult CheckIn()
+        public ActionResult New()
         {
             return View();
         }

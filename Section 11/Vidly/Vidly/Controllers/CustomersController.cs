@@ -8,7 +8,13 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        #region Property
+
         private ApplicationDbContext _context;
+
+        #endregion
+
+        #region Constructor/Destructor
 
         public CustomersController()
         {
@@ -20,7 +26,12 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
+        #endregion
+
+        #region Action
+
         // GET: Customers
+        [HttpGet]
         public ActionResult Index()
         {
             //var customers = GetCustomers();
@@ -31,6 +42,7 @@ namespace Vidly.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -42,6 +54,7 @@ namespace Vidly.Controllers
             return View("CustomerForm", viewModel);
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -90,6 +103,7 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Customers");
         }
 
+        [HttpGet]
         public ActionResult Details(int id)
         {
             //var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
@@ -102,13 +116,6 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
-        //private IEnumerable<Customer> GetCustomers()
-        //{
-        //    return new List<Customer>()
-        //    {
-        //        new Customer() { Id = 1, Name = "John Smith" },
-        //        new Customer() { Id = 2, Name = "Mary Williams" }
-        //    };
-        //}
+        #endregion
     }
 }

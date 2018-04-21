@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -13,6 +14,8 @@ namespace Vidly.App_Start
             Mapper.CreateMap<Movie, MovieDto>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
             Mapper.CreateMap<Genre, GenreDto>();
+            Mapper.CreateMap<ApplicationUser, UserDto>();
+            Mapper.CreateMap<IdentityRole, RoleDto>();
 
             //Dto to Domain
             Mapper.CreateMap<CustomerDto, Customer>()

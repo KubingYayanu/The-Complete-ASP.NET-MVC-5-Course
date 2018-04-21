@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Role List</h2>
+<p>
+    @Html.ActionLink("NEW ROLE", "New", "Roles", new { }, new { @class = "btn btn-primary btn-large" })
+</p>
+<table id="roles" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#roles").DataTable({
+                ajax: {
+                    url: "/api/roles",
+                    dataSrc: "",
+                    type: "GET"
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-link js-delete' data-role-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+        });
+    </script>    
+}
+

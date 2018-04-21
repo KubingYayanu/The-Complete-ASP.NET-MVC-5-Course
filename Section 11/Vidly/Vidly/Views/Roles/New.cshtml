@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Role</h2>
+
+<form id="newRole">
+    <div class="form-group">
+        <label>Role Name</label>
+        <input id="roleName" name="roleName" required type="text" value="" class="form-control" />
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            //ViewModel for Client
+            var vm = {};
+
+            var validator = $("#newRole").validate({
+                submitHandler: function () {
+                    vm.Name = $("#roleName").val();
+
+                    $.ajax({
+                        url: "/api/roles",
+                        method: "post",
+                        data: vm
+                    }).done(function (data, textStatus, jqXHR) {
+                        toastr.success("Role successfully added.");
+
+                        $("#roleName").val("");
+
+                        vm = {};
+
+                        location.href = jqXHR.getResponseHeader("Location");
+
+                        validator.restForm();
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        var result = JSON.parse(jqXHR.responseText);
+                        toastr.error(result.message);
+                    });
+
+                    return false;
+                }
+            });
+        });
+    </script>
+}

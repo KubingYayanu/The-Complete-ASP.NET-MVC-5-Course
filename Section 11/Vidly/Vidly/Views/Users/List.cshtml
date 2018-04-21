@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+<h2>Users</h2>
+<p>
+    @Html.ActionLink("NEW USER", "New", "Users", new { }, new { @class = "btn btn-primary btn-large" })
+</p>
+<table id="users" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#users").DataTable({
+                ajax: {
+                    url: "/api/users",
+                    dataSrc: "",
+                    type: "GET"
+                },
+                columns: [
+                    {
+                        data: "email",
+                        render: function (data, type, user) {
+                            return "<a href='/users/edit/" + user.id + "'>" + user.email + "</a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-link js-delete' data-user-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#users").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this user?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/movies/" + button.attr("data-user-id"),
+                            method: "DELETE",
+                            success: function () {
+                                var $tr = button.parents("tr");
+                                table.row($tr).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
