@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Vidly.Attributes;
 using Vidly.Models;
 
 namespace Vidly.ViewModels
@@ -12,6 +13,7 @@ namespace Vidly.ViewModels
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
         
+        [RequiredIf("Id")]
         [StringLength(100, ErrorMessage = "{0} 的長度至少必須為 {2} 個字元。", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "密碼")]

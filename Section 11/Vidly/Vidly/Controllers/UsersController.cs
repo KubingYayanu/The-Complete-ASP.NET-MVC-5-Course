@@ -62,6 +62,14 @@ namespace Vidly.Controllers
         }
 
         [HttpGet]
+        public ActionResult New()
+        {
+            var viewModel = new UserFormViewModel();
+
+            return View("UserForm", viewModel);
+        }
+
+        [HttpGet]
         public ActionResult Edit(string id)
         {
             var userInDB = _context.Users.SingleOrDefault(u => u.Id == id);
