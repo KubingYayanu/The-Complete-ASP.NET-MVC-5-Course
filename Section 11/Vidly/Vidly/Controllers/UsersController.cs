@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -64,20 +65,40 @@ namespace Vidly.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            var viewModel = new UserFormViewModel();
+            var viewModel = new UserFormViewModel
+            {
+                Roles = _context.Roles
+                .Select(Mapper.Map<IdentityRole, UserRoles>)
+                .ToList()
+            };
 
             return View("UserForm", viewModel);
         }
 
         [HttpGet]
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
             var userInDB = _context.Users.SingleOrDefault(u => u.Id == id);
 
             if (userInDB == null)
                 return HttpNotFound();
 
-            var viewModel = new UserFormViewModel(userInDB);
+            var allRoles = _context.Roles
+                .Select(Mapper.Map<IdentityRole, UserRoles>)
+                .ToList();
+
+            var userRoles = await UserManager.GetRolesAsync(id);
+
+            foreach (var role in allRoles)
+            {
+                if (userRoles.Contains(role.Name))
+                    role.Checked = true;
+            }
+
+            var viewModel = new UserFormViewModel(userInDB)
+            {
+                Roles = allRoles
+            };
 
             return View("UserForm", viewModel);
         }
@@ -102,13 +123,16 @@ namespace Vidly.Controllers
                     DrivingLicense = model.DrivingLicense
                 };
 
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var createResult = await UserManager.CreateAsync(user, model.Password);
 
-                if (!result.Succeeded)
-                {
-                    AddErrors(result);
-                    return View("UserForm", model);
-                }
+                var addRoles = model.Roles.Where(r => r.Checked).Select(r => r.Name).ToArray();
+                var addResult = await UserManager.AddToRolesAsync(model.Id, addRoles);
+
+                //if (!result.Succeeded)
+                //{
+                //    AddErrors(result);
+                //    return View("UserForm", model);
+                //}
 
                 #endregion
             }
@@ -129,13 +153,19 @@ namespace Vidly.Controllers
                 if (!string.IsNullOrWhiteSpace(model.Password))
                     userInDb.PasswordHash = UserManager.PasswordHasher.HashPassword(model.Password);
 
-                var result = await UserManager.UpdateAsync(userInDb);
+                var updateResult = await UserManager.UpdateAsync(userInDb);
 
-                if (!result.Succeeded)
-                {
-                    AddErrors(result);
-                    return View("UserForm", model);
-                }
+                var userRoles = await UserManager.GetRolesAsync(model.Id);
+                var removeResult =  await UserManager.RemoveFromRolesAsync(model.Id, userRoles.ToArray());
+
+                var addRoles = model.Roles.Where(r => r.Checked).Select(r => r.Name).ToArray();
+                var addResult = await UserManager.AddToRolesAsync(model.Id, addRoles);
+
+                //if (!result.Succeeded)
+                //{
+                //    AddErrors(result);
+                //    return View("UserForm", model);
+                //}
 
                 #endregion
             }

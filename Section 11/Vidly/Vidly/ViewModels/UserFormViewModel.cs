@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Vidly.Attributes;
 using Vidly.Models;
 
@@ -33,6 +34,8 @@ namespace Vidly.ViewModels
         [StringLength(255)]
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
+
+        public List<UserRoles> Roles { get; set; }
 
         public UserFormViewModel()
         {

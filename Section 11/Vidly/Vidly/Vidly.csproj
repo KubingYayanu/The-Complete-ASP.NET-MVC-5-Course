@@ -245,6 +245,7 @@
     <Compile Include="Controllers\Api\MoviesController.cs" />
     <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
+    <Compile Include="Controllers\Api\UserRolesController.cs" />
     <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -360,6 +361,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Rental.cs" />
+    <Compile Include="Models\UserRoles.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\FactorViewModel.cs" />

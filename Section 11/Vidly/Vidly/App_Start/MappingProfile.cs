@@ -16,6 +16,7 @@ namespace Vidly.App_Start
             Mapper.CreateMap<Genre, GenreDto>();
             Mapper.CreateMap<ApplicationUser, UserDto>();
             Mapper.CreateMap<IdentityRole, RoleDto>();
+            Mapper.CreateMap<IdentityRole, UserRoles>();
 
             //Dto to Domain
             Mapper.CreateMap<CustomerDto, Customer>()
