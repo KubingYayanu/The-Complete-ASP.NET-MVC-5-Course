@@ -17,6 +17,8 @@
         請在下面輸入此網站的使用者名稱，然後按一下 [註冊] 按鈕完成
         登入。
     </p>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">

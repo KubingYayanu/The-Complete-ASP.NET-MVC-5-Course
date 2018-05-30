@@ -7,7 +7,7 @@ namespace Vidly.Migrations
     {
         public override void Up()
         {
-            Sql("ALTER TABLE dbo.Movies DROP CONSTRAINT DF__Movies__NumberIn__6EF57B66");
+            Sql("ALTER TABLE dbo.Movies DROP CONSTRAINT DF__Movies__NumberIn__3C69FB99");
             AlterColumn("dbo.Movies", "Name", c => c.String(nullable: false, maxLength: 255));
             AlterColumn("dbo.Movies", "NumberInStock", c => c.Byte(nullable: false));
         }

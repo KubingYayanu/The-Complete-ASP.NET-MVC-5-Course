@@ -14,12 +14,20 @@ namespace Vidly
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapMvcAttributeRoutes();
-            //routes.MapRoute(
-            //    "MoviesByReleaseDate",
-            //    "movies/released/{year}/{month}",
-            //    new { controller = "Movies", action = "ByReleaseDate" },
-            //    //new { year = @"\d{4}", month = @"\d{2}" },
-            //    new { year = @"2015|2016", month = @"\d{2}" });
+
+            // for Google OAuth
+            // default return_uri is "https://domain/sign-google"
+            routes.MapRoute(
+                name: "sign-google",
+                url: "sign-google",
+                defaults: new { controller = "Account", action = "ExternalLoginCallback" });
+
+            // for Facebook OAuth
+            // default return_uri is "https://domain/signin-facebook"
+            routes.MapRoute(
+                name: "signin-facebook",
+                url: "signin-facebook",
+                defaults: new { controller = "Account", action = "ExternalLoginCallback" });
 
             routes.MapRoute(
                 name: "Default",

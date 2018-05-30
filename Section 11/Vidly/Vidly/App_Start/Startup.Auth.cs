@@ -7,6 +7,8 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Vidly.Models;
 using System.Configuration;
+using Microsoft.Owin.Security.Facebook;
+using Vidly.Handlers;
 
 namespace Vidly
 {
@@ -55,15 +57,21 @@ namespace Vidly
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: ConfigurationManager.AppSettings["FacebookAppId"],
-               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
+            app.UseFacebookAuthentication(new FacebookAuthenticationOptions()
+            {
+                AppId = ConfigurationManager.AppSettings["FacebookAppId"],
+                AppSecret = ConfigurationManager.AppSettings["FacebookAppSecret"],
+                //BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                //UserInformationEndpoint = "https://graph.facebook.com/v2.8/me?fields=id,name,email,first_name,last_name",
+                Scope = { "email" },
+                Fields = { "email" }
+            });
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
+            });
         }
     }
 }
