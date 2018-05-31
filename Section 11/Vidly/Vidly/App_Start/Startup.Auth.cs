@@ -9,6 +9,7 @@ using Vidly.Models;
 using System.Configuration;
 using Microsoft.Owin.Security.Facebook;
 using Vidly.Handlers;
+using Vidly.Providers;
 
 namespace Vidly
 {
@@ -61,16 +62,19 @@ namespace Vidly
             {
                 AppId = ConfigurationManager.AppSettings["FacebookAppId"],
                 AppSecret = ConfigurationManager.AppSettings["FacebookAppSecret"],
-                //BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                BackchannelHttpHandler = new FacebookBackChannelHandler(),
                 //UserInformationEndpoint = "https://graph.facebook.com/v2.8/me?fields=id,name,email,first_name,last_name",
-                Scope = { "email" },
-                Fields = { "email" }
+                //Provider = new CustomFacebookAuthenticationProvider(),
+                //CallbackPath = new PathString("/Account/ExternalLoginCallback"),
+                //Scope = { "email" },
+                //Fields = { "email" }
             });
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"],
+                //CallbackPath = new PathString("/Account/ExternalLoginCallback"),
             });
         }
     }

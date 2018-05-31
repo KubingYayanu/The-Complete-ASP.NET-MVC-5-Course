@@ -15,19 +15,19 @@ namespace Vidly
 
             routes.MapMvcAttributeRoutes();
 
-            // for Google OAuth
-            // default return_uri is "https://domain/sign-google"
-            routes.MapRoute(
-                name: "sign-google",
-                url: "sign-google",
-                defaults: new { controller = "Account", action = "ExternalLoginCallback" });
-
             // for Facebook OAuth
             // default return_uri is "https://domain/signin-facebook"
-            routes.MapRoute(
-                name: "signin-facebook",
-                url: "signin-facebook",
-                defaults: new { controller = "Account", action = "ExternalLoginCallback" });
+            //routes.MapRoute(
+            //    name: "signin-facebook",
+            //    url: "sign-facebook",
+            //    defaults: new { controller = "Account", action = "ExternalLoginCallback" });
+
+            // for Google OAuth
+            // default return_uri is "https://domain/sign-google"
+            //routes.MapRoute(
+            //    name: "sign-google",
+            //    url: "sign-google",
+            //    defaults: new { controller = "Account", action = "ExternalLoginCallback" });
 
             routes.MapRoute(
                 name: "Default",

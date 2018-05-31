@@ -373,6 +373,7 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\UserRoles.cs" />
+    <Compile Include="Providers\CustomFacebookAuthenticationProvider.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\FactorViewModel.cs" />
