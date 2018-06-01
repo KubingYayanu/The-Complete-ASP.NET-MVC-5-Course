@@ -21,6 +21,8 @@ namespace Vidly.Models
 
         public DbSet<Rental> Rentals { get; set; }
 
+        public DbSet<JwtAudience> JwtAudiences { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

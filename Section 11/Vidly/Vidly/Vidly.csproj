@@ -160,6 +160,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
       <Private>True</Private>
@@ -270,6 +271,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CheckInController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
+    <Compile Include="Controllers\Api\JwtAudienceController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
     <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\Api\RolesController.cs" />
@@ -285,6 +287,7 @@
     <Compile Include="Dtos\CheckMoviesInDto.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
+    <Compile Include="Dtos\JwtAudienceDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Dtos\NewRentalDto.cs" />
@@ -387,8 +390,13 @@
     <Compile Include="Migrations\201804200451340_AddPriceAndDiscountToMovieModel.Designer.cs">
       <DependentUpon>201804200451340_AddPriceAndDiscountToMovieModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806010952539_AddJwtAudienceTable.cs" />
+    <Compile Include="Migrations\201806010952539_AddJwtAudienceTable.Designer.cs">
+      <DependentUpon>201806010952539_AddJwtAudienceTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\JwtAudience.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Providers\CustomFacebookAuthenticationProvider.cs" />
@@ -782,6 +790,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804200451340_AddPriceAndDiscountToMovieModel.resx">
       <DependentUpon>201804200451340_AddPriceAndDiscountToMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806010952539_AddJwtAudienceTable.resx">
+      <DependentUpon>201806010952539_AddJwtAudienceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
