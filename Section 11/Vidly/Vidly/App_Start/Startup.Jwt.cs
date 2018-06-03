@@ -1,18 +1,19 @@
 ﻿using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.Jwt;
 using Owin;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using Microsoft.Owin.Security.DataHandler.Encoder;
 using System.IdentityModel.Tokens;
+using Vidly.Providers;
 
 namespace Vidly
 {
     public partial class Startup
     {
+        /// <summary>
+        /// 啟用JWT驗證 Authentication
+        /// </summary>
+        /// <param name="app"></param>
         public void ConfigureJwt(IAppBuilder app)
         {
             string audience = ConfigurationManager.AppSettings["JwtAudience"];
@@ -21,6 +22,8 @@ namespace Vidly
 
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
             {
+                //允許來自Query String的Token
+                //Provider = new MyOAuthBearerAuthenticationProvider(),
                 AuthenticationMode = AuthenticationMode.Active,
                 AllowedAudiences = new[] { audience },
                 IssuerSecurityTokenProviders = new IIssuerSecurityTokenProvider[]

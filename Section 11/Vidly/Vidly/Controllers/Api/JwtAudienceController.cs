@@ -30,7 +30,7 @@ namespace Vidly.Controllers.Api
             var clientId = Guid.NewGuid().ToString("N");
 
             var key = new byte[32];
-            RNGCryptoServiceProvider.Create().GetBytes(key);
+            RandomNumberGenerator.Create().GetBytes(key);
             var base64Secret = TextEncodings.Base64Url.Encode(key);
 
             var audience = new JwtAudience
