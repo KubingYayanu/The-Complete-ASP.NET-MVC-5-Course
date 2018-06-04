@@ -36,7 +36,11 @@ namespace Vidly.Controllers.Api
             return Ok(movieDtos);
         }
 
-        // Get /api/movies/1
+        /// <summary>
+        /// Get /api/movies/1
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult GetMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);

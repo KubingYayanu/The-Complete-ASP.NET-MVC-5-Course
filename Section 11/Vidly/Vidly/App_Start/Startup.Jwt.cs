@@ -35,7 +35,8 @@ namespace Vidly
                     ValidAudiences = new[] { audience },
                     ValidIssuer = issuer,
                     IssuerSigningKey = new InMemorySymmetricSecurityKey(TextEncodings.Base64Url.Decode(signKey)),
-                    IssuerSigningTokens = new SymmetricKeyIssuerSecurityTokenProvider(issuer, signKey).SecurityTokens
+                    //IssuerSigningTokens = new SymmetricKeyIssuerSecurityTokenProvider(issuer, signKey).SecurityTokens,
+                    ValidateLifetime = true
                 }
             });
         }

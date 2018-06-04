@@ -6,44 +6,37 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Web.Http;
+using Vidly.Dtos;
 using Vidly.Models;
+using Vidly.Services;
 
 namespace Vidly.Controllers.Api
 {
     public class JwtAudienceController : ApiController
     {
-        private ApplicationDbContext _context;
+        private AudiencesStore audiencesStore;
 
         public JwtAudienceController()
         {
-            _context = new ApplicationDbContext();
+            audiencesStore = new AudiencesStore();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            _context.Dispose();
-        }
-
+        /// <summary>
+        /// 增加Resource Server(Audience)
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
-        public IHttpActionResult AddAudience(string name)
+        public IHttpActionResult AddAudience(JwtAudienceDto dto)
         {
-            var clientId = Guid.NewGuid().ToString("N");
-
-            var key = new byte[32];
-            RandomNumberGenerator.Create().GetBytes(key);
-            var base64Secret = TextEncodings.Base64Url.Encode(key);
-
-            var audience = new JwtAudience
+            if (!ModelState.IsValid)
             {
-                ClientId = clientId,
-                Base64Secret = base64Secret,
-                Name = name
-            };
+                return BadRequest(ModelState);
+            }
 
-            _context.JwtAudiences.Add(audience);
-            _context.SaveChanges();
+            JwtAudience newAudience = audiencesStore.AddAudience(dto.Name);
 
-            return Ok();
+            return Ok(newAudience);
         }
     }
 }

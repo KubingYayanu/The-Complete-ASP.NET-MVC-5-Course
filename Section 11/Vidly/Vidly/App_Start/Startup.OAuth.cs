@@ -2,15 +2,14 @@
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Configuration;
+using Vidly.Formats;
 using Vidly.Providers;
 
-namespace Vidly.App_Start
+namespace Vidly
 {
-	public partial class Startup
-	{
+    public partial class Startup
+    {
         /// <summary>
         /// 啟用JWT授權 Authorization
         /// </summary>
@@ -19,13 +18,12 @@ namespace Vidly.App_Start
         {
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
-                //For Dev enviroment only (on production should be AllowInsecureHttp = false)
+                //For Dev environment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/oauth2/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 Provider = new CustomOAuthProvider(),
-				//TODO: 未實作
-                //AccessTokenFormat = new CustomJwtFormat("http://jwtauthzsrv.azurewebsites.net")
+                AccessTokenFormat = new CustomJwtFormat(ConfigurationManager.AppSettings["JwtIssuer"])
             };
 
             // OAuth 2.0 Bearer Access Token Generation

@@ -10,6 +10,8 @@ namespace Vidly
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            ConfigureOAuth(app);
+            ConfigureJwt(app);
 
             app.UseCors(CorsOptions.AllowAll);
         }

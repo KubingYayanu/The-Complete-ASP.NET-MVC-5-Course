@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using Vidly.Services;
 
 namespace Vidly.Providers
 {
@@ -16,12 +17,9 @@ namespace Vidly.Providers
         {
             string clientId = string.Empty;
             string clientSecret = string.Empty;
-            string symmetricKeyAsBase64 = string.Empty;
 
             if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
-            {
                 context.TryGetFormCredentials(out clientId, out clientSecret);
-            }
 
             if (context.ClientId == null)
             {
@@ -29,9 +27,7 @@ namespace Vidly.Providers
                 return Task.FromResult<object>(null);
             }
 
-            //HACK: 暫時註解
-            //var audience = AudiencesStore.FindAudience(context.ClientId);
-            var audience = "0";
+            var audience = (new AudiencesStore()).FindAudience(context.ClientId);
 
             if (audience == null)
             {
@@ -48,11 +44,11 @@ namespace Vidly.Providers
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            //Dummy check here, you need to do your DB checks against memebrship system http://bit.ly/SPAAuthCode
+            //TODO: 實作身分驗證
+            //Dummy check here, you need to do your DB checks against membership system http://bit.ly/SPAAuthCode
             if (context.UserName != context.Password)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect");
-                //return;
                 return Task.FromResult<object>(null);
             }
 
@@ -66,7 +62,7 @@ namespace Vidly.Providers
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     {
-                         "audience", (context.ClientId == null) ? string.Empty : context.ClientId
+                        "audience", (context.ClientId == null) ? string.Empty : context.ClientId
                     }
                 });
 
