@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "PostIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PostIndex</h2>
+
+@using (Html.BeginForm("PostIndex", "Home", FormMethod.Post))
+{
+    <div>
+        @Html.RecaptchaV2("6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI")
+    </div>
+    <input type="submit" value="push" />
+}
